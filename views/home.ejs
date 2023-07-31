@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    
+</head>
+<body>
+    <form action="/task/" method="post" class="form">
+        <h1>Task manager</h1>
+        <label for="task">Enter Task to Create</label>
+        <input type="text" name="task" id="task">
+        <button type="submit" class="formButton">Create Task</button>
+    </form>
+
+    <table class="table">
+        <h2>List of tasks</h2>
+        
+        <tr>
+            <th>Task</th>
+            <th>Update</th> 
+            <th>Delete</th>
+        </tr>
+<% tasks.forEach((task)=>{%>
+    <tr>
+        <td><%=task.task%></td>
+          <!-- this acnhor task_id take me in url -->
+
+        <td><a href="/task/<%=task._id%>"><span class="material-symbols-outlined">
+            work_update
+            </span></a></td>  
+        <td>
+            <form action="/task/<%=task._id%>?_method=DELETE" method="post" >
+
+                <button type="submit" class="button"><span class="material-symbols-outlined">
+                    delete
+                    </span></button>
+            </form>
+        </td>
+    </tr>
+    <%
+})%>
+
+    </table>
+</body>
+</html>
